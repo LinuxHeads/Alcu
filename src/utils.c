@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:22:08 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:44:35 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:11:10 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void print_map(int *map, int map_size)
 
     i = 0;
     max = 0;
-    while(map[i] || i < map_size)
+    while(map[i] != -1 && i < map_size)
     {
         if (map[i] > max)
             max = map[i];
         i++;
     }
-    while(--i > -1 && map[i])
+    while(--i > -1 && map[i] != -1)
     {
         spaces = (max - map[i]/ 2);
         while(spaces)

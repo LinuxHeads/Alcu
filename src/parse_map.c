@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:21:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:42:29 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 19:57:21 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int *str_map_to_int(char **map)
         }
         j++;
     }
-    result[j] = 0;
+    result[j] = -1;
     return (result);
 }

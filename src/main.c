@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:43:47 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 20:04:30 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void    game_loop(int *map)
 {
     int i = 0;
-    while (map[i])
+    while (map[i] != -1)
         i++;
     
     int player = WIN;
@@ -25,7 +25,6 @@ void    game_loop(int *map)
     {
         print_map(map, i);
         AI = AI_turn(map);
-        ft_putendl_fd("Ai took 1 item", 1);
         if (AI == LOST)
         {
             end_game(player, AI);
@@ -51,7 +50,7 @@ int main(int argc, char **argv)
 {
     if (argc > 2)
     {
-        ft_putendl_fd("Useage: ./alum1 [map file]", 1);
+        ft_putendl_fd("Usage: ./alum1 [map file]", 1);
         return (1);
     }
     

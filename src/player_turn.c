@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:05:07 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 16:51:24 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 19:57:21 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,41 @@ int player_turn(int *map)
 {
     int i = 0;
     int items;
+    int total_items;
+    int last_heap = -1;
     
-    while (map[i] == 0)
+    // Find the last non-empty heap
+    while (map[i] != -1)
+    {
+        if (map[i] > 0)
+            last_heap = i;
         i++;
+    }
+    
+    i = last_heap; // Start from the last non-empty heap
 
     while (1)
     {
         items = take_input();
         if (items == -1)
         {
-            return -1;
+            return ERROR;
         }
         if (remove_from_map(&map[i], items))
             break ;
     }
-    if(!map[i] && !map[i + 1])
-        return 0;
-    return (1);
+    
+    // Check if player took the last item (loses in Misère Nim)
+    total_items = 0;
+    i = 0;
+    while (map[i] != -1)
+    {
+        total_items += map[i];
+        i++;
+    }
+    
+    if (total_items == 0)
+        return LOST;
+    
+    return WIN;
 }
