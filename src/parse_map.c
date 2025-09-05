@@ -61,12 +61,14 @@ int *str_map_to_int(char **map)
     {
         if (!ft_isnumber_endl(map[i]))
         {
+            ft_putendl_fd("Error: The board containes non number elements", 2);
             free(result);
             return (NULL);
         }
         result[j] = ft_atoi(map[i]);
         if (result[j] < 1 || result[j] > 10000)
         {
+            ft_putendl_fd("Error: Each line should contain number between 1 and 10000", 2);
             free(result);
             return (NULL);
         }

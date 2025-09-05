@@ -17,6 +17,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+#define LOST 0
+#define WIN 1
+#define ERROR -1
+
 char    **read_and_store_map(void);
 int     *str_map_to_int(char **map);
 int	    ft_isnumber_endl(char *str);
@@ -24,5 +28,6 @@ void    print_map(int *map, int i);
 int     player_turn(int *map);
 int     AI_turn(int *map);
 int     remove_from_map(int *map, int num);
+void    end_game(int player,int bot);
 
 #endif // ALCU_H

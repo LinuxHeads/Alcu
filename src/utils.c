@@ -12,6 +12,24 @@
 
 #include "alcu.h"
 
+void end_game(int player,int bot)
+{
+    if (player == LOST)
+        ft_putendl_fd("Player has took the last item, player lose\n AI Winns", 1);
+		ft_putendl_fd("********************************", 1);
+		ft_putendl_fd("*********** AI Winns ***********", 1);
+		ft_putendl_fd("********************************", 1);
+    if (bot == LOST)
+	{
+        ft_putendl_fd("AI has took the last item, AI lose", 1);
+		ft_putendl_fd("********************************", 1);
+		ft_putendl_fd("********* Player Winns *********", 1);
+		ft_putendl_fd("********************************", 1);
+	}
+    if (player == ERROR)
+        ft_putendl_fd("The game stopped due to player request, \nClosing...", 1);
+}
+
 void print_map(int *map, int map_size)
 {
     int i;
