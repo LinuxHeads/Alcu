@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:22:08 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:33:40 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:44:35 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void end_game(int player,int bot)
 {
     if (player == LOST)
+    {
         ft_putendl_fd("Player has took the last item, player lose\n AI Winns", 1);
 		ft_putendl_fd("********************************", 1);
 		ft_putendl_fd("*********** AI Winns ***********", 1);
 		ft_putendl_fd("********************************", 1);
+    }
     if (bot == LOST)
 	{
         ft_putendl_fd("AI has took the last item, AI lose", 1);

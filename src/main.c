@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:23:09 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:43:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void    game_loop(int *map)
     while (map[i])
         i++;
     
-    int player;
-    int AI;
+    int player = WIN;
+    int AI = WIN;
     while (1)
     {
         print_map(map, i);
@@ -29,19 +29,19 @@ void    game_loop(int *map)
         if (AI == LOST)
         {
             end_game(player, AI);
-            return;
+            return ;
         }
         print_map(map, i);
         player = player_turn(map);
         if (player == LOST)
         {
             end_game(player, AI);
-            return;
+            return ;
         }
         else if (player == ERROR)
         {
             end_game(player, AI);
-            return;
+            return ;
         }
     }
     

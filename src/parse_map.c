@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:21:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 17:31:05 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:42:29 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int *str_map_to_int(char **map)
     int j = 0;
     while (--i >= 0 && map[i])
     {
-        printf("map[%d] ==  %s", i, map[i]);
-        printf("\n");
         if (!ft_isnumber_endl(map[i]))
         {
             ft_putendl_fd("Error: The board containes non number elements", 2);
