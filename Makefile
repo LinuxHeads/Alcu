@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -Iinclude
+CFLAGS = -Wall -Werror -Wextra -g3 -Iinclude
 NAME = alum1
 
 LIBFT_DIR = libft
@@ -10,6 +10,8 @@ SRC_DIR = src
 OBJS_DIR = objs
 
 SRC =  	main.c \
+		parse_map.c \
+		utils.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

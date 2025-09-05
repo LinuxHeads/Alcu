@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 15:25:23 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/09/05 15:22:08 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/09/05 15:23:20 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "alcu.h"
 
-void    game_loop(int *map)
+int	ft_isnumber_endl(char *str)
 {
-    while (1)
-    {
-        // print game
-        // Ai turn
-        // check lose
-        // player turn
-        // check lose
-    }
-    
-}
+	size_t	i;
 
-int main(void)
-{
-    char **map = read_and_store_map();
-    if (!map)
-        return (1);
-    int *heaps = str_map_to_int(map);
-    if (!heaps)
-        return (1);
-    
-    game_loop(heaps);
-    return 0;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+        {
+            if (str[i] == '\n' && i == ft_strlen(str) - 1)
+            {
+                i++;
+                continue;
+            }
+			return (0);
+        }
+		i++;
+	}
+	return (1);
 }
