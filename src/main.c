@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 16:58:01 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:23:09 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,30 @@ void    game_loop(int *map)
     
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-    char **map = read_and_store_map();
+    if (argc > 2)
+    {
+        ft_putendl_fd("Useage: ./alum1 [map file]", 1);
+        return (1);
+    }
+    
+    int fd = 0;
+    if (argc == 2)
+    {
+        fd = setup_input_file(argv[1]);
+    }
+    
+    char **map = read_and_store_map(fd);
     if (!map)
         return (1);
+        
     int *heaps = str_map_to_int(map);
+    // ft_free_2d(map);
     if (!heaps)
         return (1);
 
     game_loop(heaps);
+    
     return 0;
 }

@@ -6,36 +6,48 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:21:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 15:23:13 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:31:05 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 
-char **read_and_store_map(void)
+char **read_and_store_map(int fd)
 {
     char **result;
     char *str;
     char *line;
     char *temp;
+    char *temp_line;
     
     str = ft_strdup("");
     if (!str)
         return (NULL);
     while (1)
     {
-        line = get_next_line(0);
+        line = get_next_line(fd);
         if (!line || line[0] == '\0' || line[0] == '\n')
         {
             free(line);
             break;
         }
-        line = ft_strjoin(line,",");
+        temp_line = ft_strjoin(line,",");
+        free(line);
+        line = temp_line;
+        if (!line)
+        {
+            free(str);
+            return (NULL);
+        }
         temp = ft_strjoin(str,line);
         free(str);
         str = temp;
         free(line);
         line = NULL;
+        if (!str)
+        {
+            return (NULL);
+        }
     }
     result = ft_split(str,',');
     return (result);
@@ -55,10 +67,11 @@ int *str_map_to_int(char **map)
     {
         return (NULL);
     }
-    i--;
     int j = 0;
-    while (map[i] && i >= 0)
+    while (--i >= 0 && map[i])
     {
+        printf("map[%d] ==  %s", i, map[i]);
+        printf("\n");
         if (!ft_isnumber_endl(map[i]))
         {
             free(result);
@@ -70,7 +83,6 @@ int *str_map_to_int(char **map)
             free(result);
             return (NULL);
         }
-        i--;
         j++;
     }
     result[j] = 0;
