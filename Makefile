@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -g3 -Iinclude
 NAME = alum1
 
 LIBFT_DIR = libft
-LDFLAGS = -L$(LIBFT_DIR) -lft
+LDFLAGS = -L$(LIBFT_DIR) -lft -lm
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_DIR = src

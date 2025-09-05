@@ -13,11 +13,13 @@
 #include <stdio.h>
 #include "alcu.h"
 
+
+
 void    game_loop(int *map)
 {
     while (1)
     {
-        // print game
+        print_map(map);
         // Ai turn
         // check lose
         // player turn
@@ -34,7 +36,14 @@ int main(void)
     int *heaps = str_map_to_int(map);
     if (!heaps)
         return (1);
-    
-    game_loop(heaps);
+    int i = 0;
+    while (heaps[i])
+    {
+        printf("heaps [%d] : %d",i,heaps[i]);
+        i++;
+    }    
+    print_map(heaps);
+
+    // game_loop(heaps);
     return 0;
 }

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "alcu.h": "c",
+        "limits": "c"
+    }
+}

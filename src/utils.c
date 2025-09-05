@@ -11,6 +11,40 @@
 /* ************************************************************************** */
 
 #include "alcu.h"
+static void print_map(int *map)
+{
+    int i;
+    int j;
+    int max;
+    int spaces;
+
+    i = 0;
+    max = 0;
+    while(map[i])
+    {
+        if (map[i] > max)
+            max = map[i];
+        i++;
+    }
+    i--;
+    while(map[i])
+    {
+        spaces = (max - map[i]/ 2);
+        while(spaces)
+        {
+            ft_putchar_fd(' ', 1);
+            spaces--;
+        }
+        j = 0;
+        while(j < map[i])
+        {
+            ft_putchar_fd('|', 1);
+            j++;
+        }
+        ft_putchar_fd('\n', 1);
+        i--;
+    }
+}
 
 int	ft_isnumber_endl(char *str)
 {
