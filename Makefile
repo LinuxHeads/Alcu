@@ -12,6 +12,8 @@ OBJS_DIR = objs
 SRC =  	main.c \
 		parse_map.c \
 		utils.c \
+		player_turn.c \
+		ai_turn.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

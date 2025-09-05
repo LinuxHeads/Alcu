@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alcu.h                                             :+:      :+:    :+:   */
+/*   ai_turn.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 14:19:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 16:59:07 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/09/05 16:55:30 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/09/05 16:55:59 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALCU_H
-# define ALCU_H
+#include "alcu.h"
 
-# include "../libft/include/libft.h"
-# include <unistd.h>
-# include <fcntl.h>
+int    AI_turn(int *map)
+{
+    int i = 0;
+    int items;
+    
+    while (map[i] == 0)
+        i++;
 
-char    **read_and_store_map(void);
-int     *str_map_to_int(char **map);
-int	    ft_isnumber_endl(char *str);
-void    print_map(int *map, int i);
-int     player_turn(int *map);
-int     AI_turn(int *map);
-int     remove_from_map(int *map, int num);
-
-#endif // ALCU_H
+    while (1)
+    {
+        items = 1;
+        if (items == -1)
+        {
+            return -1;
+        }
+        if (remove_from_map(&map[i], items))
+            break ;
+    }
+    if(!map[i] && !map[i + 1])
+        return 0;
+    return (1);
+}

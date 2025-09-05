@@ -6,12 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:22:08 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 15:23:20 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:48:20 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
-static void print_map(int *map)
+
+void print_map(int *map, int map_size)
 {
     int i;
     int j;
@@ -20,7 +21,7 @@ static void print_map(int *map)
 
     i = 0;
     max = 0;
-    while(map[i])
+    while(map[i] || i < map_size)
     {
         if (map[i] > max)
             max = map[i];
