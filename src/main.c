@@ -6,45 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 20:04:30 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 00:19:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "alcu.h"
-
-void    game_loop(int *map)
-{
-    int i = 0;
-    while (map[i] != -1)
-        i++;
-    
-    int player = WIN;
-    int AI = WIN;
-    while (1)
-    {
-        print_map(map, i);
-        AI = AI_turn(map);
-        if (AI == LOST)
-        {
-            end_game(player, AI);
-            return ;
-        }
-        print_map(map, i);
-        player = player_turn(map);
-        if (player == LOST)
-        {
-            end_game(player, AI);
-            return ;
-        }
-        else if (player == ERROR)
-        {
-            end_game(player, AI);
-            return ;
-        }
-    }
-    
-}
 
 int main(int argc, char **argv)
 {
@@ -65,11 +31,11 @@ int main(int argc, char **argv)
         return (1);
         
     int *heaps = str_map_to_int(map);
-    // ft_free_2d(map);
+
     if (!heaps)
         return (1);
 
     game_loop(heaps);
-    
+    free(heaps);    
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:21:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 19:57:21 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 00:21:00 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,17 @@ char **read_and_store_map(int fd)
         free(line);
         line = NULL;
         if (!str)
-        {
             return (NULL);
-        }
     }
+    // Check if no input was provided (Ctrl+D immediately)
+    if (ft_strlen(str) == 0)
+    {
+        free(str);
+        return (NULL);
+    }
+    
     result = ft_split(str,',');
+    free(str);
     return (result);
 }
 
@@ -58,28 +64,32 @@ int *str_map_to_int(char **map)
     int i = 0;
     int *result;
     
+    // Check if map is NULL or empty
+    if (!map || !map[0])
+        return (NULL);
+    // Count number of lines in map
     while (map[i])
-    {
         i++;
-    }
+    // Check if no valid heaps were found
+    if (i == 0)
+        return (NULL);
     result = malloc(sizeof(int) * (i + 1));
     if (!result)
-    {
         return (NULL);
-    }
+    
     int j = 0;
-    while (--i >= 0 && map[i])
+    while (j < i && map[j])
     {
-        if (!ft_isnumber_endl(map[i]))
+        if (!ft_isnumber_endl(map[j]))
         {
-            ft_putendl_fd("Error: The board containes non number elements", 2);
+            ft_putendl_fd("ERROR", 2);
             free(result);
             return (NULL);
         }
-        result[j] = ft_atoi(map[i]);
+        result[j] = ft_atoi(map[j]);
         if (result[j] < 1 || result[j] > 10000)
         {
-            ft_putendl_fd("Error: Each line should contain number between 1 and 10000", 2);
+            ft_putendl_fd("ERROR", 2);
             free(result);
             return (NULL);
         }

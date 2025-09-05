@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:05:07 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 19:57:21 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 00:20:26 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,24 @@ static int take_input()
     
     while (1)
     {
-        ft_putstr_fd("please choose between 1 - 3 items: ", 1);
+        ft_putstr_fd("Please choose between 1 and 3 items: ", 1);
         in = get_next_line(0);
         if (!in)
-        {
             return (-1);
-        }
         if (!ft_isnumber_endl(in))
         {
-            ft_putendl_fd("invalid user input", 1);
+            ft_putendl_fd("Invalid choice", 1);
             free(in);
             continue;
         }
         num = ft_atoi(in);
         if(num < 1 || num > 3)
         {
-            ft_putendl_fd("input should be between 1 - 3 items", 1);
+            ft_putstr_fd(in, 1);
+            ft_putendl_fd(" - Invalid choice", 1);
             free(in);
             continue;
         }
-
         free(in);
         return (num);       
     }
@@ -49,7 +47,7 @@ int remove_from_map(int *map, int num)
 {
     if(*map - num < 0)
     {
-        ft_putendl_fd("not enongh items in the row, choose again.", 1);
+        ft_putendl_fd("Not enough items in the heap, choose again.", 1);
         return (0);
     }
     *map = *map - num;
@@ -58,43 +56,27 @@ int remove_from_map(int *map, int num)
 
 int player_turn(int *map)
 {
-    int i = 0;
     int items;
-    int total_items;
-    int last_heap = -1;
+    int last_heap_index;
     
-    // Find the last non-empty heap
-    while (map[i] != -1)
-    {
-        if (map[i] > 0)
-            last_heap = i;
-        i++;
-    }
+    // Find the last non-empty heap (where player must take from)
+    last_heap_index = find_last_heap(map);
+    if (last_heap_index == -1)
+        return (LOST); // No heaps available
     
-    i = last_heap; // Start from the last non-empty heap
-
+    // Get player input and validate
     while (1)
     {
         items = take_input();
         if (items == -1)
-        {
-            return ERROR;
-        }
-        if (remove_from_map(&map[i], items))
+            return (ERROR);
+        if (remove_from_map(&map[last_heap_index], items))
             break ;
     }
     
     // Check if player took the last item (loses in Misère Nim)
-    total_items = 0;
-    i = 0;
-    while (map[i] != -1)
-    {
-        total_items += map[i];
-        i++;
-    }
+    if (calculate_total_items(map) == 0)
+        return (LOST);
     
-    if (total_items == 0)
-        return LOST;
-    
-    return WIN;
+    return (WIN);
 }
