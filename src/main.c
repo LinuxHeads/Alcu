@@ -13,10 +13,6 @@
 #include <stdio.h>
 #include "alcu.h"
 
-#define LOST 0
-#define WIN 1
-#define ERROR -1
-
 void    game_loop(int *map)
 {
     int i = 0;
@@ -32,19 +28,19 @@ void    game_loop(int *map)
         ft_putendl_fd("Ai took 1 item", 1);
         if (AI == LOST)
         {
-            // end_game(player);
+            end_game(player, AI);
             return;
         }
         print_map(map, i);
         player = player_turn(map);
         if (player == LOST)
         {
-            // end_game(player);
+            end_game(player, AI);
             return;
         }
         else if (player == ERROR)
         {
-            // end_game(player);
+            end_game(player, AI);
             return;
         }
     }
