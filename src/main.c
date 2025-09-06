@@ -6,35 +6,36 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:16:19 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 15:25:23 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 00:19:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "alcu.h"
 
-void    game_loop(int *map)
+int main(int argc, char **argv)
 {
-    while (1)
+    if (argc > 2)
     {
-        // print game
-        // Ai turn
-        // check lose
-        // player turn
-        // check lose
+        ft_putendl_fd("Usage: ./alum1 [map file]", 1);
+        return (1);
     }
     
-}
-
-int main(void)
-{
-    char **map = read_and_store_map();
+    int fd = 0;
+    if (argc == 2)
+    {
+        fd = setup_input_file(argv[1]);
+    }
+    
+    char **map = read_and_store_map(fd);
     if (!map)
         return (1);
+        
     int *heaps = str_map_to_int(map);
+
     if (!heaps)
         return (1);
-    
+
     game_loop(heaps);
+    free(heaps);    
     return 0;
 }

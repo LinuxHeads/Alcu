@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -g3 -Iinclude
 NAME = alum1
 
 LIBFT_DIR = libft
-LDFLAGS = -L$(LIBFT_DIR) -lft
+LDFLAGS = -L$(LIBFT_DIR) -lft -lm
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC_DIR = src
@@ -12,6 +12,10 @@ OBJS_DIR = objs
 SRC =  	main.c \
 		parse_map.c \
 		utils.c \
+		player_turn.c \
+		ai_turn.c \
+		print_map.c \
+		game_loop.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
