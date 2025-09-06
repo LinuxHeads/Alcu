@@ -6,52 +6,12 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:55:30 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/05 23:55:56 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:25:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 
-int find_last_heap(int *map)
-{
-    int i = 0;
-    int last_heap = -1;
-    
-    while (map[i] != -1)
-    {
-        if (map[i] > 0)
-            last_heap = i;
-        i++;
-    }
-    return (last_heap);
-}
-
-int count_non_empty_heaps(int *map)
-{
-    int count = 0;
-    int i = 0;
-    
-    while (map[i] != -1)
-    {
-        if (map[i] > 0)
-            count++;
-        i++;
-    }
-    return (count);
-}
-
-int calculate_total_items(int *map)
-{
-    int total = 0;
-    int i = 0;
-    
-    while (map[i] != -1)
-    {
-        total += map[i];
-        i++;
-    }
-    return (total);
-}
 
 int calculate_ai_move(int heap_size, int non_empty_heaps)
 {
@@ -125,7 +85,7 @@ int apply_ai_strategy(int *map)
     return (move);
 }
 
-int AI_turn(int *map)
+int ai_turn(int *map)
 {
     int move;
     int total_items;

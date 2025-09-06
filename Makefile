@@ -16,6 +16,7 @@ SRC =  	main.c \
 		ai_turn.c \
 		print_map.c \
 		game_loop.c \
+		player_utils.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
