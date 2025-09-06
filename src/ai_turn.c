@@ -6,58 +6,56 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:55:30 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 15:39:52 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:30:38 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 
-int calculate_ai_move(int heap_size, int non_empty_heaps,int final)
+int try_to_be_last(int heap_size)
 {
-    // If only one heap left (endgame in Misère Nim)
-    if (non_empty_heaps == 1)
+    if (heap_size <= 3)
     {
-        // In Misère Nim, we want to leave an odd number of items
-        // so the opponent is forced to take the last item
-        if (heap_size <= 3)
-        {
-            if (heap_size == 1)
-                return (1); // Forced to take the last item (lose)
-            else
-                return (heap_size - 1); // Leave 1 item for opponent
-        }
-        else
-        {
-            // Leave heap size that forces opponent into bad position
-            int leave = heap_size % 4;
-            if (leave == 0)
-                return (3); // Leave 1 item
-            else if (leave == 1)
-                return (1); // Leave 0 items - we lose anyway
-            else
-                return (leave - 1); // Leave 1 item
-        }
+        return (heap_size); // Leave 1 item for opponent
     }
-    else if (final == 1 || final == 5)
-    {
-        // if last heap contain 1 or 5 try to be the last on this heap
-        if (heap_size <= 3)
-        {
-            return (heap_size); // Leave 1 item for opponent
-        }
-        else
-        {
-            return (1);
-        }
-    }
-    // Multiple heaps: play standard strategy
-    // Try to take items optimally, preferring to take more when possible
-    if (heap_size >= 3)
-        return (3);
-    else if (heap_size >= 2)
-        return (2);
     else
+    {
         return (1);
+    }
+}
+
+int try_not_to_be_last(int heap_size)
+{
+    if (heap_size <= 3)
+    {
+        if (heap_size == 1)
+            return (1); // Forced to take the last item (lose)
+        else
+            return (heap_size - 1); // Leave 1 item for opponent
+    }
+    else
+    {
+        // Leave heap size that forces opponent into bad position
+        int leave = heap_size % 4;
+        if (leave == 0)
+            return (3); // Leave 1 item
+        else if (leave == 1)
+            return (1); // Leave 0 items - we lose anyway
+        else
+            return (leave - 1); // Leave 1 item
+    }
+}
+
+int calculate_ai_move(int heap_size, int non_empty_heaps)
+{
+    if(non_empty_heaps % 2 != 0)
+    {
+        return try_not_to_be_last(heap_size);
+    }
+    else
+    {
+        return (try_to_be_last(heap_size));
+    }
 }
 
 int apply_ai_strategy(int *map)
@@ -75,7 +73,7 @@ int apply_ai_strategy(int *map)
     non_empty_heaps = count_non_empty_heaps(map);
     
     // Calculate optimal move based on game state
-    move = calculate_ai_move(map[last_heap_index], non_empty_heaps, map[0]);
+    move = calculate_ai_move(map[last_heap_index], non_empty_heaps);
     
     // Ensure move is valid
     if (move > map[last_heap_index])

@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:19:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 13:24:05 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:29:29 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	game_loop(int *map);
 int		find_last_heap(int *map);
 int		count_non_empty_heaps(int *map);
 int		calculate_total_items(int *map);
-int     calculate_ai_move(int heap_size, int non_empty_heaps,int final);
 int		apply_ai_strategy(int *map);
 
 #endif // ALCU_H
