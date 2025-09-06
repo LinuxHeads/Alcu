@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:55:30 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 13:25:47 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 15:39:52 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int calculate_ai_move(int heap_size, int non_empty_heaps,int final)
         }
         else
         {
-            return(1);
+            return (1);
         }
     }
     // Multiple heaps: play standard strategy
@@ -75,7 +75,7 @@ int apply_ai_strategy(int *map)
     non_empty_heaps = count_non_empty_heaps(map);
     
     // Calculate optimal move based on game state
-    move = calculate_ai_move(map[last_heap_index], non_empty_heaps, map[calculate_total_items(map) - 1]);
+    move = calculate_ai_move(map[last_heap_index], non_empty_heaps, map[0]);
     
     // Ensure move is valid
     if (move > map[last_heap_index])
