@@ -40,7 +40,7 @@ void	game_loop(int *map);
 int		find_last_heap(int *map);
 int		count_non_empty_heaps(int *map);
 int		calculate_total_items(int *map);
-int		calculate_ai_move(int heap_size, int non_empty_heaps);
+int     calculate_ai_move(int heap_size, int non_empty_heaps,int final);
 int		apply_ai_strategy(int *map);
 
 #endif // ALCU_H

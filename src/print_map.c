@@ -58,7 +58,10 @@ void print_map(int *map, int map_size)
     i = 0;
     while(i < map_size && map[i] != -1)
     {
-        print_spaces(((max - map[i]) / 2) % 30);
+        if (max > 30)
+            print_spaces(((30 - map[i])));
+        else
+            print_spaces(((max - map[i])));
         print_heap(map[i]);
         ft_putchar_fd('\n', 1);
         i++;

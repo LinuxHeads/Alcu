@@ -12,8 +12,7 @@
 
 #include "alcu.h"
 
-
-int calculate_ai_move(int heap_size, int non_empty_heaps)
+int calculate_ai_move(int heap_size, int non_empty_heaps,int final)
 {
     // If only one heap left (endgame in Misère Nim)
     if (non_empty_heaps == 1)
@@ -37,6 +36,18 @@ int calculate_ai_move(int heap_size, int non_empty_heaps)
                 return (1); // Leave 0 items - we lose anyway
             else
                 return (leave - 1); // Leave 1 item
+        }
+    }
+    else if (final == 1 || final == 5)
+    {
+        // if last heap contain 1 or 5 try to be the last on this heap
+        if (heap_size <= 3)
+        {
+            return (heap_size); // Leave 1 item for opponent
+        }
+        else
+        {
+            return(1);
         }
     }
     // Multiple heaps: play standard strategy
@@ -64,7 +75,7 @@ int apply_ai_strategy(int *map)
     non_empty_heaps = count_non_empty_heaps(map);
     
     // Calculate optimal move based on game state
-    move = calculate_ai_move(map[last_heap_index], non_empty_heaps);
+    move = calculate_ai_move(map[last_heap_index], non_empty_heaps, map[calculate_total_items(map) - 1]);
     
     // Ensure move is valid
     if (move > map[last_heap_index])
