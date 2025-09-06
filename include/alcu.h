@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:19:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 00:19:59 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:07:49 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define LOST 0
 # define WIN 1
 # define ERROR -1
+# define MAX_ITEMS 10000
+# define MIN_ITEMS 1
+# define MAX_REMOVAL 3
+# define MIN_REMOVAL 1
 
 char    **read_and_store_map(int fd);
 int     *str_map_to_int(char **map);

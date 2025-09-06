@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:21:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 00:21:00 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:08:49 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int *str_map_to_int(char **map)
             return (NULL);
         }
         result[j] = ft_atoi(map[j]);
-        if (result[j] < 1 || result[j] > 10000)
+        if (result[j] < MIN_ITEMS || result[j] > MAX_ITEMS)
         {
             ft_putendl_fd("ERROR", 2);
             free(result);

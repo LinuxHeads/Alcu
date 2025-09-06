@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 16:05:07 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/09/06 00:20:26 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:08:31 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int take_input()
             continue;
         }
         num = ft_atoi(in);
-        if(num < 1 || num > 3)
+        if(num < MIN_REMOVAL || num > MAX_REMOVAL)
         {
             ft_putstr_fd(in, 1);
             ft_putendl_fd(" - Invalid choice", 1);
